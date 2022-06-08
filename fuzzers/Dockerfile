@@ -6,7 +6,7 @@ nodejs pkg-config autoconf libcurl4-openssl-dev libicu-dev unzip ccache
 RUN git clone --recursive https://github.com/trustwallet/wallet-core.git
 WORKDIR /wallet-core
 RUN ./bootstrap.sh
-RUN cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+RUN cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Debug
 RUN make
 RUN make install
 COPY src/mnemonic_fuzz.cpp .
