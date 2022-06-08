@@ -2,7 +2,7 @@ FROM fuzzers/libfuzzer:12.0
 
 RUN apt-get update
 RUN apt install -y build-essential wget git clang  automake autotools-dev  libtool zlib1g zlib1g-dev libexif-dev libjpeg-dev libssl-dev cmake  ninja-build \ 
-nodejs pkg-config autoconf libcurl4-openssl-dev libicu-dev unzip ccache
+nodejs pkg-config autoconf libcurl4-openssl-dev libicu-dev unzip ccache ruby
 RUN git clone --recursive https://github.com/trustwallet/wallet-core.git
 WORKDIR /wallet-core
 RUN ./bootstrap.sh
