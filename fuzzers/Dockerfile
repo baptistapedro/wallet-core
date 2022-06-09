@@ -10,7 +10,8 @@ RUN cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TY
 RUN make
 RUN make install
 COPY src/mnemonic_fuzz.cpp .
-RUN clang++ mnemonic_fuzz.cpp -o /mnemonicFuzz 
+RUN clang++ -I/usr/local/include/ -fsanitize=fuzzer,address mnemonic_fuzz.cpp -o /mnemonicFuzz /usr/local/lib/libTrustWalletCore.a
+
 
 ENTRYPOINT []
 CMD /mnemonicFuzz /seeds
